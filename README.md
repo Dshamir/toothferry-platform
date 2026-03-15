@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ToothFerry AI — Multi-Portal Platform
 
-## Getting Started
+AI-powered dental crown generation platform. From intraoral scan to printable STL in under two minutes.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **React 19** + **TypeScript 5**
+- **Tailwind CSS 4** with design token system
+- **Zustand + Immer** for state management
+- **Framer Motion** for animations
+- **Puck Editor** (`@puckeditor/core`) for visual page editing
+
+## Portals
+
+| Portal | Path | Purpose |
+|--------|------|---------|
+| Landing | `/` | Marketing page — hero, pipeline, founders |
+| Operator | `/operator` | Real-time case routing and pipeline monitoring |
+| Admin | `/admin` | System health, GPU utilization, service status |
+| Command | `/command` | Live ops, KPIs with sparklines, event feed |
+| Academic | `/academic` | University training — students, professors, assistants |
+| Dentist | `/dentist` | Case management, prep quality scoring |
+| Lab | `/lab` | Order queue, machine utilization, material inventory |
+| Editor | `/editor` | Visual drag-and-drop page editor (Puck) |
+
+## Visual Page Editor
+
+The platform includes a Puck-based visual editor at `/editor` that lets you edit portal pages with drag-and-drop. Components available in the editor:
+
+- **Typography:** Heading, Paragraph
+- **Layout:** Section, Columns (2/3/4), Spacer
+- **UI Components:** Card, KpiCard, Badge, Button, ProgressBar
+
+All editor components wrap the same UI primitives used throughout the platform.
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The platform ships as a single Docker container running Next.js + ngrok via supervisord.
 
-## Learn More
+```bash
+docker compose up --build -d
+```
 
-To learn more about Next.js, take a look at the following resources:
+This starts:
+- **Next.js** production server on port 8888 (mapped to host port 3050)
+- **ngrok** tunnel to `tfai.ngrok.app`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set your ngrok auth token in `docker-compose.yml` or via environment variable:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NGROK_AUTHTOKEN=your_token docker compose up --build -d
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/
+    (portals)/          # Portal routes with shared PortalBar layout
+      academic/         # Academic portal + professor/assistant/student sub-portals
+      admin/            # Admin portal + compliance/flags/roles/scanners
+      command/          # Command center + alerts/gtm/revenue/roadmap
+      dentist/          # Dentist portal + cases/patients/reports
+      lab/              # Lab portal + analytics/batch/billing/milling
+      operator/         # Operator dashboard
+    editor/             # Puck visual editor
+      [slug]/           # Edit specific portal page
+      preview/[slug]/   # Preview edited page
+  components/
+    academic/           # Academic-specific components
+    animation/          # Motion primitives (FadeSlideIn, StaggerChildren, etc.)
+    layout/             # PortalBar, Sidebar, TopNav, MobileNav
+    shared/             # ThemeLoader, ThemeSwitcher, StatusLed, Logo
+    ui/                 # Design system (Card, Badge, Button, KpiCard, etc.)
+  data/                 # Seed data for demo simulation
+  hooks/                # Custom hooks (usePortalTheme, useSimulation, useTour)
+  lib/                  # Config, formatters, Puck config, portal definitions
+  simulation/           # Live simulation engine, event bus, generators
+  store/                # Zustand stores (simulation, editor, academic, theme, etc.)
+  types/                # TypeScript type definitions
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Theme System
+
+Two theme files in `public/themes/`:
+- `design-tokens-v2.css` — Primary design token set
+- `legacy-teal.css` — Alternative teal theme
+
+Themes are loaded via CSS custom properties and can be switched at runtime with the ThemeSwitcher component.

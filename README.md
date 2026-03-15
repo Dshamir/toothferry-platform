@@ -1,38 +1,131 @@
-# ToothFerry AI — Multi-Portal Platform
+# ToothFerry AI
 
-AI-powered dental crown generation platform. From intraoral scan to printable STL in under two minutes.
+AI-powered dental crown generation. Intraoral scan to milling-ready STL in under two minutes, with 70.7 micrometer mean margin accuracy.
+
+Founded by **Haim Keren** (CEO, Prosthodontist & McGill Professor), **Julia Keren** (COO), and **Dr. Nathaniel Lasry** (CSO, AI/ML Research Lead).
+
+## What This Is
+
+A fully interactive, client-side demo platform simulating the complete ToothFerry product across 9 role-based portals. Every portal has its own layout, sidebar, navigation, and live simulation data. No backend required — all state lives in Zustand stores with seed data.
+
+## AI Crown Pipeline
+
+```
+Ingest scan (STL/OBJ/PLY) → Segment arch (MeshSegNet) → Detect margin (5-fold ensemble)
+→ Generate crown (3D reconstruction) → QC validate (margin gap + occlusion) → Export STL
+```
+
+## Portals (42 pages)
+
+### Landing (`/`)
+Marketing page with hero, 6-step pipeline visualization, 9-portal grid, founder bios, trust bar, and CTA.
+
+### Operator (`/operator`)
+Real-time case routing dashboard. Pipeline phase distribution, case table with confidence scores, priority flags.
+
+### Admin (`/admin`)
+System health monitoring. API/inference status, GPU utilization (4x A100), service table with latency/uptime/version, storage usage.
+
+| Sub-route | Purpose |
+|-----------|---------|
+| `/admin/compliance` | Compliance dashboard |
+| `/admin/feature-flags` | Feature flag management |
+| `/admin/model-config` | AI model configuration |
+| `/admin/roles` | Role-based access control |
+| `/admin/scanners` | Scanner device management |
+
+### Command Center (`/command`)
+Live ops and business intelligence. KPI cards with inline sparkline charts, real-time event feed auto-updating every 4 seconds with color-coded portal indicators.
+
+| Sub-route | Purpose |
+|-----------|---------|
+| `/command/alerts` | Active alert management |
+| `/command/gtm` | Go-to-market phase tracking |
+| `/command/revenue` | Revenue analytics |
+| `/command/roadmap` | Product roadmap |
+
+### Academic (`/academic`)
+University-level institutional dashboard. 124 students, 4 professors, training module progress tracking, activity feed.
+
+| Sub-route | Purpose |
+|-----------|---------|
+| `/academic/professor` | Professor portal — 5-axis evaluation, student review queue |
+| `/academic/professor/evaluate` | Evaluate student submissions |
+| `/academic/professor/student/[id]` | Individual student profile |
+| `/academic/assistant` | Assistant portal — grade assigned students |
+| `/academic/assistant/evaluate` | Submit evaluations for professor review |
+| `/academic/student` | Student portal — scan submission, scores |
+| `/academic/student/submit` | Upload prep scans |
+| `/academic/student/feedback` | View evaluation feedback |
+| `/academic/student/transcript` | Academic transcript |
+| `/academic/courses` | Course catalog |
+| `/academic/crown-anatomy` | Crown anatomy training module |
+| `/academic/margin-training` | Margin line detection training |
+| `/academic/prep-eval` | Prep evaluation exercises |
+| `/academic/grades` | Grade overview |
+| `/academic/users` | User management |
+
+### Dentist (`/dentist`)
+Case management dashboard. KPIs (crowns/month, design time, first-pass acceptance, prep quality score), 6-stage pipeline status, recent cases table.
+
+| Sub-route | Purpose |
+|-----------|---------|
+| `/dentist/generate` | 5-step crown generation wizard |
+| `/dentist/cases` | All cases list |
+| `/dentist/patients` | Patient records |
+| `/dentist/results` | AI generation results |
+| `/dentist/reports` | Analytics reports |
+| `/dentist/team` | Team management |
+
+### Lab (`/lab`)
+Production operations. Order queue with priority cards, machine utilization (progress bars per mill), material inventory with critical alerts, 7-day throughput bar chart. ROI insight box.
+
+| Sub-route | Purpose |
+|-----------|---------|
+| `/lab/analytics` | Production analytics |
+| `/lab/batch` | Batch processing |
+| `/lab/billing` | Billing and invoicing |
+| `/lab/dentists` | Referring dentist management |
+| `/lab/milling` | Milling queue operations |
+| `/lab/review` | STL review and approval |
+
+### Page Editor (`/editor`)
+Visual drag-and-drop page editor built on [Puck](https://github.com/measuredco/puck). Lists all portal pages for editing. Each opens a full-screen Puck canvas with a component panel on the left.
+
+Available editor components wrap the platform's actual UI primitives:
+- **Typography:** Heading (h1-h4), Paragraph
+- **Layout:** Section (with background color), Columns (2/3/4), Spacer
+- **UI:** Card (with drop zone), KpiCard, Badge (8 variants), Button (4 variants, 3 sizes), ProgressBar
 
 ## Stack
 
-- **Next.js 16** (App Router, Turbopack)
-- **React 19** + **TypeScript 5**
-- **Tailwind CSS 4** with design token system
-- **Zustand + Immer** for state management
-- **Framer Motion** for animations
-- **Puck Editor** (`@puckeditor/core`) for visual page editing
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| Framework | Next.js (App Router, Turbopack) | 16.1.6 |
+| UI | React | 19.2.3 |
+| Language | TypeScript | 5.x |
+| Styling | Tailwind CSS | 4.x |
+| State | Zustand + Immer | 5.x / 11.x |
+| Animation | Framer Motion | 12.x |
+| Page Editor | @puckeditor/core | 0.21.x |
 
-## Portals
+## Theme System
 
-| Portal | Path | Purpose |
-|--------|------|---------|
-| Landing | `/` | Marketing page — hero, pipeline, founders |
-| Operator | `/operator` | Real-time case routing and pipeline monitoring |
-| Admin | `/admin` | System health, GPU utilization, service status |
-| Command | `/command` | Live ops, KPIs with sparklines, event feed |
-| Academic | `/academic` | University training — students, professors, assistants |
-| Dentist | `/dentist` | Case management, prep quality scoring |
-| Lab | `/lab` | Order queue, machine utilization, material inventory |
-| Editor | `/editor` | Visual drag-and-drop page editor (Puck) |
+CSS custom property design tokens loaded from `public/themes/`. Two themes ship:
+- **design-tokens-v2.css** — Primary dark/light token set
+- **legacy-teal.css** — Alternative teal theme
 
-## Visual Page Editor
+Runtime switching via the `ThemeSwitcher` component (bottom-right corner). Each portal applies its own color overrides via `usePortalTheme()`.
 
-The platform includes a Puck-based visual editor at `/editor` that lets you edit portal pages with drag-and-drop. Components available in the editor:
+## Layout Architecture
 
-- **Typography:** Heading, Paragraph
-- **Layout:** Section, Columns (2/3/4), Spacer
-- **UI Components:** Card, KpiCard, Badge, Button, ProgressBar
+Each portal has its own `layout.tsx` providing:
+- **TopNav** — portal name, color accent, horizontal tab bar
+- **Sidebar** — grouped navigation with icons and optional badges
+- **MobileNav** — responsive bottom nav for mobile
+- **PortalBar** — global top bar across all portals (38px) with portal links
 
-All editor components wrap the same UI primitives used throughout the platform.
+The PortalBar link order: `TF | www | platform | admin | command | ── | academic | professor | assistant | student | ── | dentist | lab | ── | Edit Mode`
 
 ## Development
 
@@ -41,59 +134,20 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Opens at `http://localhost:3000`.
 
-## Docker Deployment
+## Docker
 
-The platform ships as a single Docker container running Next.js + ngrok via supervisord.
+Single container running Next.js + ngrok tunnel via supervisord:
 
 ```bash
+# Set your ngrok auth token
+export NGROK_AUTHTOKEN=your_token_here
+
 docker compose up --build -d
 ```
 
-This starts:
-- **Next.js** production server on port 8888 (mapped to host port 3050)
-- **ngrok** tunnel to `tfai.ngrok.app`
+- App: `http://localhost:3050`
+- Tunnel: `https://tfai.ngrok.app`
 
-Set your ngrok auth token in `docker-compose.yml` or via environment variable:
-
-```bash
-NGROK_AUTHTOKEN=your_token docker compose up --build -d
-```
-
-## Project Structure
-
-```
-src/
-  app/
-    (portals)/          # Portal routes with shared PortalBar layout
-      academic/         # Academic portal + professor/assistant/student sub-portals
-      admin/            # Admin portal + compliance/flags/roles/scanners
-      command/          # Command center + alerts/gtm/revenue/roadmap
-      dentist/          # Dentist portal + cases/patients/reports
-      lab/              # Lab portal + analytics/batch/billing/milling
-      operator/         # Operator dashboard
-    editor/             # Puck visual editor
-      [slug]/           # Edit specific portal page
-      preview/[slug]/   # Preview edited page
-  components/
-    academic/           # Academic-specific components
-    animation/          # Motion primitives (FadeSlideIn, StaggerChildren, etc.)
-    layout/             # PortalBar, Sidebar, TopNav, MobileNav
-    shared/             # ThemeLoader, ThemeSwitcher, StatusLed, Logo
-    ui/                 # Design system (Card, Badge, Button, KpiCard, etc.)
-  data/                 # Seed data for demo simulation
-  hooks/                # Custom hooks (usePortalTheme, useSimulation, useTour)
-  lib/                  # Config, formatters, Puck config, portal definitions
-  simulation/           # Live simulation engine, event bus, generators
-  store/                # Zustand stores (simulation, editor, academic, theme, etc.)
-  types/                # TypeScript type definitions
-```
-
-## Theme System
-
-Two theme files in `public/themes/`:
-- `design-tokens-v2.css` — Primary design token set
-- `legacy-teal.css` — Alternative teal theme
-
-Themes are loaded via CSS custom properties and can be switched at runtime with the ThemeSwitcher component.
+For production deployment on a Linux server, clone and run `docker compose up --build -d`.

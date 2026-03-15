@@ -1,0 +1,642 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================
+ * INTELLIDENT / TOOTHFERRY AI — DESIGN SYSTEM v2.0
+ * Design Tokens — faithfully extracted from platform UI
+ * Governs: Dentist · Lab · Education · Admin portals
+ * Primary brand: Cobalt Blue · Pill CTAs · Blue-tinted canvas
+ * ============================================================
+ */
+
+/* ── Tailwind v4 Theme Integration ── */
+@theme inline {
+  --color-brand-25: var(--brand-25, var(--p-cobalt-25));
+  --color-brand-50: var(--brand-50, var(--p-cobalt-50));
+  --color-brand-100: var(--brand-100, var(--p-cobalt-100));
+  --color-brand-200: var(--brand-200, var(--p-cobalt-200));
+  --color-brand-300: var(--brand-300, var(--p-cobalt-300));
+  --color-brand-400: var(--brand-400, var(--p-cobalt-400));
+  --color-brand-500: var(--brand-500, var(--p-cobalt-500));
+  --color-brand-600: var(--brand-600, var(--p-cobalt-600));
+  --color-brand-700: var(--brand-700, var(--p-cobalt-700));
+  --color-brand-800: var(--brand-800, var(--p-cobalt-800));
+  --color-brand-900: var(--brand-900, var(--p-cobalt-900));
+
+  --color-surface-page: var(--color-bg-page);
+  --color-surface-card: var(--color-bg-surface);
+  --color-surface-sunken: var(--color-bg-sunken);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-tertiary);
+
+  --color-action: var(--color-action-bg);
+  --color-action-hover: var(--color-action-bg-hover);
+
+  --color-border: var(--color-border-subtle);
+  --color-border-strong: var(--color-border-default);
+
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+  --color-info: #2563EB;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+}
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 1 · PRIMITIVE TOKENS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Cobalt Blue (brand primary) ── */
+  --p-cobalt-25:  #F0F5FF;
+  --p-cobalt-50:  #E5EFFE;
+  --p-cobalt-100: #C3D6FC;
+  --p-cobalt-200: #93B4F9;
+  --p-cobalt-300: #5D8DF5;
+  --p-cobalt-400: #3570EE;
+  --p-cobalt-500: #2563EB;
+  --p-cobalt-600: #1D51CC;
+  --p-cobalt-700: #163FAA;
+  --p-cobalt-800: #1E3A8A;
+  --p-cobalt-900: #172554;
+
+  /* ── Deep Navy ── */
+  --p-navy-50:   #EEF2FA;
+  --p-navy-100:  #CDD6EE;
+  --p-navy-200:  #9AAED8;
+  --p-navy-300:  #5C7AB8;
+  --p-navy-400:  #2F5196;
+  --p-navy-500:  #1D3A78;
+  --p-navy-600:  #152D5E;
+  --p-navy-700:  #0E2049;
+  --p-navy-800:  #081536;
+  --p-navy-900:  #030B1F;
+
+  /* ── Teal (Lab portal) ── */
+  --p-teal-50:   #E8F7F5;
+  --p-teal-100:  #C0EBE5;
+  --p-teal-200:  #88D5CC;
+  --p-teal-300:  #43B9AC;
+  --p-teal-400:  #179A8B;
+  --p-teal-500:  #0D7E72;
+  --p-teal-600:  #086358;
+  --p-teal-700:  #054840;
+  --p-teal-800:  #023028;
+  --p-teal-900:  #011813;
+
+  /* ── Violet (Education portal) ── */
+  --p-violet-50:  #F0EEFB;
+  --p-violet-100: #D5CEF6;
+  --p-violet-200: #B5A9EF;
+  --p-violet-300: #8B79E5;
+  --p-violet-400: #6750D6;
+  --p-violet-500: #5240C0;
+  --p-violet-600: #3F30A0;
+  --p-violet-700: #2E2278;
+  --p-violet-800: #1E1650;
+  --p-violet-900: #100C2C;
+
+  /* ── Slate (Admin portal, body text) ── */
+  --p-slate-25:  #FAFBFC;
+  --p-slate-50:  #F1F5F9;
+  --p-slate-100: #E2E8F0;
+  --p-slate-200: #CBD5E1;
+  --p-slate-300: #94A3B8;
+  --p-slate-400: #64748B;
+  --p-slate-500: #475569;
+  --p-slate-600: #334155;
+  --p-slate-700: #1E293B;
+  --p-slate-800: #0F172A;
+  --p-slate-900: #020617;
+
+  /* ── Status colors ── */
+  --status-progress-bg:   #E2E8F0;
+  --status-progress-text: #475569;
+  --status-ready-bg:      #2563EB;
+  --status-ready-text:    #FFFFFF;
+  --status-review-bg:     #F97316;
+  --status-review-text:   #FFFFFF;
+  --status-reviewed-bg:   #16A34A;
+  --status-reviewed-text: #FFFFFF;
+  --status-pending-bg:    #EAB308;
+  --status-pending-text:  #713F12;
+  --status-error-bg:      #FEE2E2;
+  --status-error-text:    #B91C1C;
+  --status-error-border:  #FECACA;
+  --status-success-bg:    #EFF6FF;
+  --status-success-text:  #1D4ED8;
+  --status-success-border:#BFDBFE;
+
+  /* ── Page canvas ── */
+  --canvas-bg:     #EEF3FA;
+  --canvas-mid:    #E8EFFA;
+
+  /* ── Feedback semantic ── */
+  --p-green-50:  #F0FDF4;
+  --p-green-400: #22C55E;
+  --p-green-600: #16A34A;
+  --p-green-800: #166534;
+  --p-amber-50:  #FFFBEB;
+  --p-amber-400: #FBBF24;
+  --p-amber-600: #D97706;
+  --p-amber-800: #92400E;
+  --p-red-50:    #FEF2F2;
+  --p-red-400:   #F87171;
+  --p-red-600:   #DC2626;
+  --p-red-800:   #991B1B;
+  --p-orange-400: #F97316;
+  --p-orange-50:  #FFF7ED;
+
+  --p-white: #FFFFFF;
+  --p-black: #020617;
+
+  /* ── Spacing ── */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+  --space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;
+
+  /* ── Radius ── */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-card: 12px;
+  --radius-pill: 9999px;
+
+  /* ── Type scale ── */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-md:   17px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  30px;
+  --text-3xl:  38px;
+  --text-4xl:  56px;
+
+  /* ── Font stacks ── */
+  --font-display: 'Plus Jakarta Sans','DM Sans',system-ui,sans-serif;
+  --font-body:    'Inter','DM Sans',system-ui,sans-serif;
+  --font-mono:    'JetBrains Mono',monospace;
+
+  /* ── Font weights ── */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extrabold:800;
+
+  /* ── Line heights ── */
+  --lh-tight:   1.2;
+  --lh-snug:    1.35;
+  --lh-base:    1.55;
+  --lh-relaxed: 1.7;
+
+  /* ── Letter spacing ── */
+  --ls-tight:  -0.025em;
+  --ls-normal:  0;
+  --ls-wide:    0.02em;
+  --ls-wider:   0.06em;
+
+  /* ── Elevation ── */
+  --shadow-card: 0 2px 8px rgba(30, 58, 138, 0.08), 0 1px 3px rgba(30, 58, 138, 0.05);
+  --shadow-md:   0 4px 16px rgba(30, 58, 138, 0.10), 0 2px 6px rgba(30, 58, 138, 0.06);
+  --shadow-lg:   0 8px 28px rgba(30, 58, 138, 0.12), 0 4px 10px rgba(30, 58, 138, 0.07);
+  --shadow-xl:   0 16px 48px rgba(30, 58, 138, 0.15), 0 8px 16px rgba(30, 58, 138, 0.08);
+
+  /* ── Motion ── */
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:    120ms;
+  --dur-base:    220ms;
+  --dur-slow:    380ms;
+
+  /* ── Glassmorphism ── */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-light: rgba(255, 255, 255, 0.65);
+  --glass-blur: 16px;
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-border-light: rgba(255, 255, 255, 0.35);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 2 · SEMANTIC TOKENS (shared — all portals)
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --color-bg-page:     var(--canvas-bg);
+  --color-bg-surface:  var(--p-white);
+  --color-bg-sunken:   var(--canvas-mid);
+  --color-bg-overlay:  rgba(30, 58, 138, 0.48);
+
+  --color-text-primary:   var(--p-slate-700);
+  --color-text-secondary: var(--p-slate-400);
+  --color-text-tertiary:  var(--p-slate-300);
+  --color-text-inverse:   var(--p-white);
+  --color-text-link:      var(--p-cobalt-500);
+
+  --color-border-subtle:  #E2E8F2;
+  --color-border-default: #CBD5E8;
+  --color-border-strong:  #94A3C0;
+  --color-border-focus:   var(--p-cobalt-500);
+
+  --color-success-bg:    var(--p-green-50);
+  --color-success-text:  var(--p-green-800);
+  --color-success-icon:  var(--p-green-400);
+  --color-warning-bg:    var(--p-amber-50);
+  --color-warning-text:  var(--p-amber-800);
+  --color-warning-icon:  var(--p-amber-400);
+  --color-danger-bg:     var(--p-red-50);
+  --color-danger-text:   var(--p-red-800);
+  --color-danger-icon:   var(--p-red-600);
+  --color-info-bg:       var(--p-cobalt-50);
+  --color-info-text:     var(--p-cobalt-800);
+  --color-info-icon:     var(--p-cobalt-500);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 3 · PORTAL TOKENS
+   ──────────────────────────────────────────────────────────── */
+
+/* Dentist Portal — Cobalt */
+[data-portal="dentist"],
+[data-portal="dentist"] .portal-root {
+  --brand-25:  var(--p-cobalt-25);
+  --brand-50:  var(--p-cobalt-50);
+  --brand-100: var(--p-cobalt-100);
+  --brand-200: var(--p-cobalt-200);
+  --brand-300: var(--p-cobalt-300);
+  --brand-400: var(--p-cobalt-400);
+  --brand-500: var(--p-cobalt-500);
+  --brand-600: var(--p-cobalt-600);
+  --brand-700: var(--p-cobalt-700);
+  --brand-800: var(--p-cobalt-800);
+  --brand-900: var(--p-cobalt-900);
+
+  --color-action-bg:        var(--p-cobalt-500);
+  --color-action-bg-hover:  var(--p-cobalt-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-cobalt-500);
+  --color-action-ghost-border: var(--p-cobalt-200);
+  --color-heading-brand:    var(--p-cobalt-800);
+
+  --nav-bg:              var(--p-cobalt-800);
+  --nav-text:            var(--p-cobalt-200);
+  --nav-text-active:     var(--p-white);
+  --nav-active-bg:       var(--p-cobalt-600);
+  --nav-accent:          #60A5FA;
+
+  --chart-1: #2563EB; --chart-2: #60A5FA;
+  --chart-3: #93C5FD; --chart-4: #BFDBFE;
+}
+
+/* Lab Portal — Teal */
+[data-portal="lab"] {
+  --brand-25:  #F0FAFA; --brand-50: var(--p-teal-50);
+  --brand-100: var(--p-teal-100); --brand-200: var(--p-teal-200);
+  --brand-300: var(--p-teal-300); --brand-400: var(--p-teal-400);
+  --brand-500: var(--p-teal-500); --brand-600: var(--p-teal-600);
+  --brand-700: var(--p-teal-700); --brand-800: var(--p-teal-800);
+  --brand-900: var(--p-teal-900);
+
+  --color-action-bg:        var(--p-teal-500);
+  --color-action-bg-hover:  var(--p-teal-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-teal-500);
+  --color-action-ghost-border: var(--p-teal-200);
+  --color-heading-brand:    var(--p-teal-800);
+
+  --nav-bg:             var(--p-teal-800);
+  --nav-text:           var(--p-teal-200);
+  --nav-text-active:    var(--p-white);
+  --nav-active-bg:      var(--p-teal-600);
+  --nav-accent:         #6EE7B7;
+
+  --chart-1: #179A8B; --chart-2: #43B9AC;
+  --chart-3: #88D5CC; --chart-4: #C0EBE5;
+}
+
+/* Education Portal — Violet */
+[data-portal="education"] {
+  --brand-25:  #F8F7FD; --brand-50: var(--p-violet-50);
+  --brand-100: var(--p-violet-100); --brand-200: var(--p-violet-200);
+  --brand-300: var(--p-violet-300); --brand-400: var(--p-violet-400);
+  --brand-500: var(--p-violet-500); --brand-600: var(--p-violet-600);
+  --brand-700: var(--p-violet-700); --brand-800: var(--p-violet-800);
+  --brand-900: var(--p-violet-900);
+
+  --color-action-bg:        var(--p-violet-500);
+  --color-action-bg-hover:  var(--p-violet-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-violet-500);
+  --color-action-ghost-border: var(--p-violet-200);
+  --color-heading-brand:    var(--p-violet-800);
+
+  --nav-bg:             var(--p-violet-800);
+  --nav-text:           var(--p-violet-200);
+  --nav-text-active:    var(--p-white);
+  --nav-active-bg:      var(--p-violet-600);
+  --nav-accent:         #A78BFA;
+
+  --chart-1: #6750D6; --chart-2: #8B79E5;
+  --chart-3: #B5A9EF; --chart-4: #D5CEF6;
+}
+
+/* Admin Portal — Slate Dark */
+[data-portal="admin"] {
+  --brand-25:  var(--p-slate-25); --brand-50: var(--p-slate-50);
+  --brand-100: var(--p-slate-100); --brand-200: var(--p-slate-200);
+  --brand-300: var(--p-slate-300); --brand-400: var(--p-slate-400);
+  --brand-500: var(--p-slate-500); --brand-600: var(--p-slate-600);
+  --brand-700: var(--p-slate-700); --brand-800: var(--p-slate-800);
+  --brand-900: var(--p-slate-900);
+
+  --color-bg-page: #0D1117;
+  --color-bg-surface: #161B22;
+  --color-bg-sunken: #1C2128;
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-text-tertiary: #6E7681;
+  --color-border-subtle: #30363D;
+  --color-border-default: #21262D;
+
+  --color-action-bg:        #58A6FF;
+  --color-action-bg-hover:  #79C0FF;
+  --color-action-text:      #0D1117;
+  --color-action-ghost-text: #58A6FF;
+  --color-action-ghost-border: #30363D;
+  --color-heading-brand:    #E6EDF3;
+
+  --nav-bg:             #161B22;
+  --nav-text:           #8B949E;
+  --nav-text-active:    #58A6FF;
+  --nav-active-bg:      rgba(88,166,255,0.08);
+  --nav-accent:         #67E8F9;
+
+  --chart-1: #334155; --chart-2: #64748B;
+  --chart-3: #94A3B8; --chart-4: #CBD5E1;
+
+  --card-bg: #161B22;
+  --card-shadow: none;
+
+  /* Admin dark topnav + sidebar */
+  --topnav-bg: #161B22;
+  --topnav-shadow: none;
+  --topnav-title: #E6EDF3;
+  --topnav-tab: #8B949E;
+  --topnav-tab-active: #58A6FF;
+  --topnav-icon-bg: #1C2128;
+
+  --sidebar-bg: #161B22;
+  --sidebar-label: #6E7681;
+  --sidebar-text: #8B949E;
+  --sidebar-active-bg: rgba(88, 166, 255, 0.08);
+  --sidebar-active-text: #58A6FF;
+}
+
+/* Command Center — Green-on-Black */
+[data-portal="command"] {
+  --color-bg-page: #060A08;
+  --color-bg-surface: #0A0F0D;
+  --color-bg-sunken: #060A08;
+  --color-text-primary: #5DCAA5;
+  --color-text-secondary: rgba(93,202,165,0.5);
+  --color-text-tertiary: rgba(93,202,165,0.3);
+  --color-border-subtle: rgba(29,158,117,0.15);
+  --color-border-default: rgba(29,158,117,0.25);
+
+  --color-action-bg:        rgba(29,158,117,0.12);
+  --color-action-bg-hover:  rgba(29,158,117,0.22);
+  --color-action-text:      #3FB950;
+  --color-action-ghost-text: #5DCAA5;
+  --color-action-ghost-border: rgba(29,158,117,0.3);
+  --color-heading-brand:    #5DCAA5;
+
+  --nav-bg:             #0A0F0D;
+  --nav-text:           rgba(93,202,165,0.5);
+  --nav-text-active:    #5DCAA5;
+  --nav-active-bg:      rgba(29,158,117,0.12);
+  --nav-accent:         #3FB950;
+
+  --chart-1: #3FB950; --chart-2: #5DCAA5;
+  --chart-3: rgba(93,202,165,0.4); --chart-4: rgba(93,202,165,0.2);
+
+  --card-bg: rgba(0,0,0,0.3);
+  --card-shadow: none;
+
+  /* Command dark topnav + sidebar */
+  --topnav-bg: #0A0F0D;
+  --topnav-shadow: none;
+  --topnav-title: #5DCAA5;
+  --topnav-tab: rgba(93, 202, 165, 0.4);
+  --topnav-tab-active: #5DCAA5;
+  --topnav-icon-bg: rgba(29, 158, 117, 0.08);
+
+  --sidebar-bg: #0A0F0D;
+  --sidebar-label: rgba(93, 202, 165, 0.3);
+  --sidebar-text: rgba(93, 202, 165, 0.5);
+  --sidebar-active-bg: rgba(29, 158, 117, 0.12);
+  --sidebar-active-text: #5DCAA5;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 4 · COMPONENT TOKENS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --card-bg:      var(--p-white);
+  --card-border:  1px solid var(--color-border-subtle);
+  --card-radius:  var(--radius-card);
+  --card-padding: var(--space-6);
+  --card-shadow:  var(--shadow-card);
+
+  --input-height:      42px;
+  --input-px:          var(--space-4);
+  --input-bg:          var(--p-white);
+  --input-border:      1px solid var(--color-border-default);
+  --input-border-focus:1px solid var(--p-cobalt-500);
+  --input-radius:      var(--radius-lg);
+  --input-shadow-focus:0 0 0 3px rgba(37, 99, 235, 0.15);
+  --input-text:        var(--color-text-primary);
+  --input-placeholder: var(--color-text-tertiary);
+
+  --btn-height-sm:     34px;
+  --btn-height-md:     44px;
+  --btn-height-lg:     52px;
+  --btn-px-sm:         var(--space-4);
+  --btn-px-md:         var(--space-6);
+  --btn-px-lg:         var(--space-8);
+  --btn-radius-pill:   var(--radius-pill);
+  --btn-radius-std:    var(--radius-lg);
+  --btn-font-size:     var(--text-sm);
+  --btn-font-weight:   var(--fw-semibold);
+
+  --badge-radius:      var(--radius-pill);
+  --badge-padding:     4px 14px;
+  --badge-font-size:   var(--text-xs);
+  --badge-font-weight: var(--fw-semibold);
+
+  --sidebar-width:    240px;
+  --sidebar-item-h:   42px;
+  --sidebar-item-r:   var(--radius-md);
+  --sidebar-item-px:  var(--space-3);
+
+  --table-th-bg:       var(--p-cobalt-50);
+  --table-th-text:     var(--p-cobalt-700);
+  --table-th-size:     var(--text-sm);
+  --table-th-weight:   var(--fw-semibold);
+  --table-td-padding:  var(--space-3) var(--space-4);
+  --table-border:      1px solid var(--color-border-subtle);
+  --table-row-hover:   var(--p-cobalt-25);
+
+  --toggle-width:    46px;
+  --toggle-height:   26px;
+  --toggle-bg-off:   var(--p-slate-300);
+  --toggle-bg-on:    var(--p-cobalt-500);
+
+  --progress-track-bg:   var(--p-cobalt-100);
+  --progress-fill-color: var(--p-cobalt-500);
+  --progress-height:     6px;
+  --progress-radius:     var(--radius-pill);
+
+  --skeleton-bg:       var(--p-cobalt-50);
+  --skeleton-shimmer:  var(--p-cobalt-25);
+  --skeleton-radius:   var(--radius-md);
+  --skeleton-duration: 1.6s;
+
+  /* ── Portal bar ── */
+  --portal-bar-height: 38px;
+  --portal-bar-bg: #0A0F0D;
+  --portal-bar-border: rgba(29, 158, 117, 0.2);
+  --portal-bar-accent: #5DCAA5;
+  --portal-bar-active: #5DCAA5;
+  --portal-bar-text: rgba(255, 255, 255, 0.4);
+
+  /* ── TopNav (below portal bar) ── */
+  --topnav-bg: var(--color-bg-surface);
+  --topnav-shadow: var(--shadow-card);
+  --topnav-title: var(--color-text-primary);
+  --topnav-tab: var(--color-text-secondary);
+  --topnav-tab-active: var(--color-action-bg);
+  --topnav-icon-bg: var(--color-bg-sunken);
+
+  /* ── Sidebar ── */
+  --sidebar-bg: var(--color-bg-surface);
+  --sidebar-label: var(--color-text-secondary);
+  --sidebar-text: var(--color-text-secondary);
+  --sidebar-active-bg: var(--brand-50, rgba(37, 99, 235, 0.07));
+  --sidebar-active-text: var(--color-action-bg);
+
+  /* ── Landing page ── */
+  --landing-bg:            #141412;
+  --landing-nav-bg:        rgba(20, 20, 18, 0.95);
+  --landing-nav-border:    rgba(255, 255, 255, 0.06);
+  --landing-accent:        #2563EB;
+  --landing-accent-hover:  #1D51CC;
+  --landing-accent-light:  #5D8DF5;
+  --landing-accent-glow:   rgba(37, 99, 235, 0.14);
+  --landing-accent-border: rgba(37, 99, 235, 0.28);
+  --landing-heading:       #FFFFFF;
+  --landing-body:          rgba(255, 255, 255, 0.5);
+  --landing-muted:         rgba(255, 255, 255, 0.38);
+  --landing-subtle:        rgba(255, 255, 255, 0.28);
+  --landing-faint:         rgba(255, 255, 255, 0.06);
+  --landing-card-bg:       rgba(255, 255, 255, 0.04);
+  --landing-card-border:   rgba(255, 255, 255, 0.08);
+  --landing-card-hover:    rgba(255, 255, 255, 0.07);
+  --landing-ghost-border:  rgba(255, 255, 255, 0.2);
+  --landing-ghost-text:    rgba(255, 255, 255, 0.8);
+  --landing-section-bg:    rgba(255, 255, 255, 0.03);
+  --landing-feature-dot:   #5D8DF5;
+  --landing-step-border:   rgba(37, 99, 235, 0.35);
+  --landing-gradient-from:  rgba(37, 99, 235, 0.13);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   BASE STYLES
+   ──────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg-page);
+  min-height: 100vh;
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--p-slate-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--p-slate-400); }
+
+
+/* ────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ──────────────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in { animation: fadeIn 0.18s ease; }
+.animate-pulse { animation: pulse 1.6s ease-in-out infinite; }
+.animate-blink { animation: blink 1.5s infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+
+
+/* ────────────────────────────────────────────────────────────
+   FOCUS RING (accessibility)
+   ──────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--p-cobalt-500);
+  outline-offset: 2px;
+}

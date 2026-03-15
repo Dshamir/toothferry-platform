@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: tfai-app
+    ports:
+      - "3050:8888"
+    environment:
+      NGROK_AUTHTOKEN: 2xp5CFLpEd0Xr8KLjZ69h0lxl9p_43UGFKD5EwyHYgW13kTev
+    restart: unless-stopped

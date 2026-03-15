@@ -1,0 +1,241 @@
+/*
+ * ============================================================
+ * TOOTHFERRY AI — LEGACY THEME (Teal / Cream / Syne)
+ * Extracted from original HTML portal mockups
+ * toothferryai_v2.html, p3_dentist.html, p4_lab.html, etc.
+ * ============================================================
+ */
+
+:root {
+  /* ── Landing page (teal accent instead of cobalt) ── */
+  --landing-bg:            #141412;
+  --landing-nav-bg:        rgba(20, 20, 18, 0.95);
+  --landing-nav-border:    rgba(255, 255, 255, 0.06);
+  --landing-accent:        #1D9E75;
+  --landing-accent-hover:  #0F6E56;
+  --landing-accent-light:  #5DCAA5;
+  --landing-accent-glow:   rgba(29, 158, 117, 0.14);
+  --landing-accent-border: rgba(29, 158, 117, 0.28);
+  --landing-heading:       #FFFFFF;
+  --landing-body:          rgba(255, 255, 255, 0.5);
+  --landing-muted:         rgba(255, 255, 255, 0.38);
+  --landing-subtle:        rgba(255, 255, 255, 0.28);
+  --landing-faint:         rgba(255, 255, 255, 0.06);
+  --landing-card-bg:       rgba(255, 255, 255, 0.04);
+  --landing-card-border:   rgba(255, 255, 255, 0.08);
+  --landing-card-hover:    rgba(255, 255, 255, 0.07);
+  --landing-ghost-border:  rgba(255, 255, 255, 0.2);
+  --landing-ghost-text:    rgba(255, 255, 255, 0.8);
+  --landing-section-bg:    rgba(255, 255, 255, 0.03);
+  --landing-feature-dot:   #5DCAA5;
+  --landing-step-border:   rgba(29, 158, 117, 0.35);
+  --landing-gradient-from: rgba(29, 158, 117, 0.13);
+
+  /* ── Primary palette (teal-based) ── */
+  --p-cobalt-25:  #E1F5EE;
+  --p-cobalt-50:  #E1F5EE;
+  --p-cobalt-100: #C3EBD9;
+  --p-cobalt-200: #9FE1CB;
+  --p-cobalt-300: #5DCAA5;
+  --p-cobalt-400: #1D9E75;
+  --p-cobalt-500: #1D9E75;
+  --p-cobalt-600: #0F6E56;
+  --p-cobalt-700: #0F6E56;
+  --p-cobalt-800: #093828;
+  --p-cobalt-900: #04201A;
+
+  /* ── Override semantic surfaces for cream canvas ── */
+  --canvas-bg:     #F6F4EF;
+  --canvas-mid:    #F0EDE6;
+
+  /* ── Text colors (charcoal-based) ── */
+  --p-slate-25:  #FAF9F6;
+  --p-slate-50:  #F6F4EF;
+  --p-slate-100: #E0DDD5;
+  --p-slate-200: #C8C4BA;
+  --p-slate-300: #6E6E68;
+  --p-slate-400: #6E6E68;
+  --p-slate-500: #4A4A45;
+  --p-slate-600: #2E2E2A;
+  --p-slate-700: #141412;
+  --p-slate-800: #0A0A09;
+  --p-slate-900: #050504;
+
+  /* ── Teal overrides for Lab portal ── */
+  --p-teal-50:   #E1F5EE;
+  --p-teal-100:  #C3EBD9;
+  --p-teal-200:  #9FE1CB;
+  --p-teal-300:  #5DCAA5;
+  --p-teal-400:  #1D9E75;
+  --p-teal-500:  #1D9E75;
+  --p-teal-600:  #0F6E56;
+  --p-teal-700:  #093828;
+  --p-teal-800:  #04201A;
+  --p-teal-900:  #021008;
+
+  /* ── Status colors (legacy) ── */
+  --status-progress-bg:   #E0DDD5;
+  --status-progress-text: #6E6E68;
+  --status-ready-bg:      #1D9E75;
+  --status-ready-text:    #FFFFFF;
+  --status-review-bg:     #EF9F27;
+  --status-review-text:   #FFFFFF;
+  --status-reviewed-bg:   #1D9E75;
+  --status-reviewed-text: #FFFFFF;
+  --status-pending-bg:    #FAEEDA;
+  --status-pending-text:  #854F0B;
+  --status-error-bg:      #FCEBEB;
+  --status-error-text:    #A32D2D;
+  --status-error-border:  #F7C1C1;
+  --status-success-bg:    #E1F5EE;
+  --status-success-text:  #0F6E56;
+  --status-success-border:#9FE1CB;
+
+  /* ── Feedback semantic ── */
+  --p-green-50:  #E1F5EE;
+  --p-green-400: #1D9E75;
+  --p-green-600: #0F6E56;
+  --p-green-800: #093828;
+  --p-amber-50:  #FAEEDA;
+  --p-amber-400: #EF9F27;
+  --p-amber-600: #D4891F;
+  --p-amber-800: #854F0B;
+
+  /* ── Borders (warm cream) ── */
+  --color-border-subtle:  #E0DDD5;
+  --color-border-default: #D0CDC5;
+  --color-border-strong:  #B0ADA5;
+  --color-border-focus:   #1D9E75;
+
+  /* ── Shadows (neutral warm) ── */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md:   0 2px 8px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.07);
+  --shadow-lg:   0 4px 16px rgba(0,0,0,0.1), 0 12px 40px rgba(0,0,0,0.08);
+  --shadow-xl:   0 8px 32px rgba(0,0,0,0.12), 0 16px 48px rgba(0,0,0,0.1);
+
+  /* ── Radius (softer, less pill) ── */
+  --radius-card: 10px;
+  --radius-pill: 7px;
+  --radius-lg:   6px;
+
+  /* ── Fonts (Syne headings) ── */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ── Component tokens ── */
+  --btn-radius-pill: 7px;
+  --btn-radius-std:  7px;
+  --badge-radius:    7px;
+
+  --toggle-bg-on: #1D9E75;
+  --toggle-bg-off: #E0DDD5;
+
+  --table-th-bg:     #F6F4EF;
+  --table-th-text:   #6E6E68;
+  --table-row-hover: #faf9f6;
+
+  --progress-track-bg:   #E0DDD5;
+  --progress-fill-color: #1D9E75;
+
+  --skeleton-bg: #E0DDD5;
+  --skeleton-shimmer: #F6F4EF;
+}
+
+/* ── Portal overrides for legacy theme ── */
+[data-portal="dentist"] {
+  --color-action-bg:        #1D9E75;
+  --color-action-bg-hover:  #0F6E56;
+  --color-action-text:      #FFFFFF;
+  --color-action-ghost-text: #1D9E75;
+  --color-action-ghost-border: #C3EBD9;
+  --color-heading-brand:    #141412;
+
+  --nav-bg:              #FFFFFF;
+  --nav-text:            #6E6E68;
+  --nav-text-active:     #0F6E56;
+  --nav-active-bg:       #E1F5EE;
+  --nav-accent:          #5DCAA5;
+
+  --brand-50: #E1F5EE;
+  --brand-100: #C3EBD9;
+  --brand-500: #1D9E75;
+  --brand-600: #0F6E56;
+  --brand-700: #093828;
+}
+
+[data-portal="lab"] {
+  --color-action-bg:        #EF9F27;
+  --color-action-bg-hover:  #D4891F;
+  --color-action-text:      #FFFFFF;
+  --color-action-ghost-text: #854F0B;
+  --color-action-ghost-border: #FAC775;
+  --color-heading-brand:    #141412;
+
+  --nav-bg:              #FFFFFF;
+  --nav-text:            #6E6E68;
+  --nav-text-active:     #854F0B;
+  --nav-active-bg:       #FAEEDA;
+  --nav-accent:          #EF9F27;
+}
+
+[data-portal="education"] {
+  --color-action-bg:        #185FA5;
+  --color-action-bg-hover:  #0F4A85;
+  --color-action-text:      #FFFFFF;
+  --color-action-ghost-text: #185FA5;
+  --color-action-ghost-border: #B5D4F4;
+  --color-heading-brand:    #141412;
+
+  --nav-bg:              #FFFFFF;
+  --nav-text:            #6E6E68;
+  --nav-text-active:     #185FA5;
+  --nav-active-bg:       rgba(24,95,165,0.07);
+  --nav-accent:          #378ADD;
+}
+
+[data-portal="admin"] {
+  --color-bg-page: #0D1117;
+  --color-bg-surface: #161B22;
+  --color-bg-sunken: #1C2128;
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-border-subtle: #30363D;
+
+  --color-action-bg:        #58A6FF;
+  --color-action-bg-hover:  #79C0FF;
+  --color-action-text:      #0D1117;
+
+  --nav-bg:             #161B22;
+  --nav-text:           #8B949E;
+  --nav-text-active:    #58A6FF;
+  --nav-active-bg:      rgba(88,166,255,0.08);
+
+  --card-bg: #161B22;
+  --card-shadow: none;
+  --shadow-card: none;
+}
+
+[data-portal="command"] {
+  --color-bg-page: #060A08;
+  --color-bg-surface: #0A0F0D;
+  --color-text-primary: #5DCAA5;
+  --color-text-secondary: rgba(93,202,165,0.5);
+  --color-border-subtle: rgba(29,158,117,0.15);
+
+  --color-action-bg:        rgba(29,158,117,0.12);
+  --color-action-bg-hover:  rgba(29,158,117,0.22);
+  --color-action-text:      #3FB950;
+
+  --nav-bg:             #0A0F0D;
+  --nav-text:           rgba(93,202,165,0.5);
+  --nav-text-active:    #5DCAA5;
+  --nav-active-bg:      rgba(29,158,117,0.12);
+
+  --card-bg: rgba(0,0,0,0.3);
+  --card-shadow: none;
+  --shadow-card: none;
+}
+
+/* ── Import Syne font for legacy theme ── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap');

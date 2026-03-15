@@ -1,0 +1,775 @@
+/*
+ * ============================================================
+ * INTELLIDENT™ / TOOTHFERRY AI — DESIGN SYSTEM v2.0
+ * Design Tokens — faithfully extracted from platform UI
+ * Governs: Dentist · Lab · Education · Admin portals
+ * Primary brand: Cobalt Blue · Pill CTAs · Blue-tinted canvas
+ * ============================================================
+ */
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 1 · PRIMITIVE TOKENS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Landing page (cobalt accent on warm charcoal — matches original contrast) ── */
+  --landing-bg:            #141412;
+  --landing-nav-bg:        rgba(20, 20, 18, 0.95);
+  --landing-nav-border:    rgba(255, 255, 255, 0.06);
+  --landing-accent:        #2563EB;
+  --landing-accent-hover:  #1D51CC;
+  --landing-accent-light:  #60A5FA;
+  --landing-accent-glow:   rgba(37, 99, 235, 0.14);
+  --landing-accent-border: rgba(37, 99, 235, 0.28);
+  --landing-heading:       #FFFFFF;
+  --landing-body:          rgba(255, 255, 255, 0.5);
+  --landing-muted:         rgba(255, 255, 255, 0.38);
+  --landing-subtle:        rgba(255, 255, 255, 0.28);
+  --landing-faint:         rgba(255, 255, 255, 0.06);
+  --landing-card-bg:       rgba(255, 255, 255, 0.04);
+  --landing-card-border:   rgba(255, 255, 255, 0.07);
+  --landing-card-hover:    rgba(255, 255, 255, 0.07);
+  --landing-ghost-border:  rgba(255, 255, 255, 0.2);
+  --landing-ghost-text:    rgba(255, 255, 255, 0.8);
+  --landing-section-bg:    rgba(255, 255, 255, 0.03);
+  --landing-feature-dot:   #60A5FA;
+  --landing-step-border:   rgba(37, 99, 235, 0.35);
+  --landing-gradient-from: rgba(37, 99, 235, 0.13);
+
+  /* ── Cobalt Blue (brand primary — matches ToothFerry UI) ── */
+  --p-cobalt-25:  #F0F5FF;
+  --p-cobalt-50:  #E5EFFE;
+  --p-cobalt-100: #C3D6FC;
+  --p-cobalt-200: #93B4F9;
+  --p-cobalt-300: #5D8DF5;
+  --p-cobalt-400: #3570EE;
+  --p-cobalt-500: #2563EB;  /* PRIMARY — matches "Log In" button, headings, active states */
+  --p-cobalt-600: #1D51CC;
+  --p-cobalt-700: #163FAA;
+  --p-cobalt-800: #1E3A8A;  /* HEADING DARK — matches slide h1 color */
+  --p-cobalt-900: #172554;
+
+  /* ── Deep Navy (heading text, dark backgrounds) ── */
+  --p-navy-50:   #EEF2FA;
+  --p-navy-100:  #CDD6EE;
+  --p-navy-200:  #9AAED8;
+  --p-navy-300:  #5C7AB8;
+  --p-navy-400:  #2F5196;
+  --p-navy-500:  #1D3A78;
+  --p-navy-600:  #152D5E;
+  --p-navy-700:  #0E2049;
+  --p-navy-800:  #081536;
+  --p-navy-900:  #030B1F;
+
+  /* ── Teal (Lab portal) ── */
+  --p-teal-50:   #E8F7F5;
+  --p-teal-100:  #C0EBE5;
+  --p-teal-200:  #88D5CC;
+  --p-teal-300:  #43B9AC;
+  --p-teal-400:  #179A8B;
+  --p-teal-500:  #0D7E72;
+  --p-teal-600:  #086358;
+  --p-teal-700:  #054840;
+  --p-teal-800:  #023028;
+  --p-teal-900:  #011813;
+
+  /* ── Violet (Education portal) ── */
+  --p-violet-50:  #F0EEFB;
+  --p-violet-100: #D5CEF6;
+  --p-violet-200: #B5A9EF;
+  --p-violet-300: #8B79E5;
+  --p-violet-400: #6750D6;
+  --p-violet-500: #5240C0;
+  --p-violet-600: #3F30A0;
+  --p-violet-700: #2E2278;
+  --p-violet-800: #1E1650;
+  --p-violet-900: #100C2C;
+
+  /* ── Slate (Admin portal, body text) ── */
+  --p-slate-25:  #FAFBFC;
+  --p-slate-50:  #F1F5F9;
+  --p-slate-100: #E2E8F0;
+  --p-slate-200: #CBD5E1;
+  --p-slate-300: #94A3B8;
+  --p-slate-400: #64748B;
+  --p-slate-500: #475569;
+  --p-slate-600: #334155;
+  --p-slate-700: #1E293B;  /* primary text */
+  --p-slate-800: #0F172A;
+  --p-slate-900: #020617;
+
+  /* ── Status colors (exact from UI) ── */
+  /* In Progress — gray neutral */
+  --status-progress-bg:   #E2E8F0;
+  --status-progress-text: #475569;
+  /* Ready for Review — cobalt blue */
+  --status-ready-bg:      #2563EB;
+  --status-ready-text:    #FFFFFF;
+  /* Under Review — amber/orange */
+  --status-review-bg:     #F97316;
+  --status-review-text:   #FFFFFF;
+  /* Reviewed — green */
+  --status-reviewed-bg:   #16A34A;
+  --status-reviewed-text: #FFFFFF;
+  /* Pending (alternate) — yellow-amber */
+  --status-pending-bg:    #EAB308;
+  --status-pending-text:  #713F12;
+  /* Error / Not Detected — red */
+  --status-error-bg:      #FEE2E2;
+  --status-error-text:    #B91C1C;
+  --status-error-border:  #FECACA;
+  /* Success / Generated — blue light */
+  --status-success-bg:    #EFF6FF;
+  --status-success-text:  #1D4ED8;
+  --status-success-border:#BFDBFE;
+
+  /* ── Page canvas — blue-tinted (matches platform bg) ── */
+  --canvas-bg:     #EEF3FA;   /* page/shell background */
+  --canvas-mid:    #E8EFFA;   /* slightly deeper for sunken areas */
+
+  /* ── Feedback semantic ── */
+  --p-green-50:  #F0FDF4;
+  --p-green-400: #22C55E;
+  --p-green-600: #16A34A;
+  --p-green-800: #166534;
+  --p-amber-50:  #FFFBEB;
+  --p-amber-400: #FBBF24;
+  --p-amber-600: #D97706;
+  --p-amber-800: #92400E;
+  --p-red-50:    #FEF2F2;
+  --p-red-400:   #F87171;
+  --p-red-600:   #DC2626;
+  --p-red-800:   #991B1B;
+  --p-orange-400: #F97316;
+  --p-orange-50:  #FFF7ED;
+
+  --p-white: #FFFFFF;
+  --p-black: #020617;
+
+  /* ── Spacing ── */
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+  --space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;
+
+  /* ── Radius ── */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-card: 12px;  /* card corner — matches screenshots */
+  --radius-pill: 9999px; /* CTA buttons, badges — matches "Log In" button */
+
+  /* ── Type scale ── */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-md:   17px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  30px;
+  --text-3xl:  38px;
+  --text-4xl:  56px;
+
+  /* ── Font stacks ── */
+  --font-display: 'Plus Jakarta Sans','DM Sans',system-ui,sans-serif;
+  --font-body:    'Inter','DM Sans',system-ui,sans-serif;
+  --font-mono:    'JetBrains Mono',monospace;
+
+  /* ── Font weights ── */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extrabold:800;  /* slide headings */
+
+  /* ── Line heights ── */
+  --lh-tight:   1.2;
+  --lh-snug:    1.35;
+  --lh-base:    1.55;
+  --lh-relaxed: 1.7;
+
+  /* ── Letter spacing ── */
+  --ls-tight:  -0.025em;
+  --ls-normal:  0;
+  --ls-wide:    0.02em;
+  --ls-wider:   0.06em;
+
+  /* ── Elevation (white card on blue canvas) ── */
+  --shadow-card: 0 2px 8px rgba(30, 58, 138, 0.08), 0 1px 3px rgba(30, 58, 138, 0.05);
+  --shadow-md:   0 4px 16px rgba(30, 58, 138, 0.10), 0 2px 6px rgba(30, 58, 138, 0.06);
+  --shadow-lg:   0 8px 28px rgba(30, 58, 138, 0.12), 0 4px 10px rgba(30, 58, 138, 0.07);
+  --shadow-xl:   0 16px 48px rgba(30, 58, 138, 0.15), 0 8px 16px rgba(30, 58, 138, 0.08);
+
+  /* ── Motion ── */
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:    120ms;
+  --dur-base:    220ms;
+  --dur-slow:    380ms;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 2 · SEMANTIC TOKENS (shared — all portals)
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Surfaces ── */
+  --color-bg-page:     var(--canvas-bg);       /* page shell, matches platform */
+  --color-bg-surface:  var(--p-white);          /* card & panel surfaces */
+  --color-bg-sunken:   var(--canvas-mid);       /* inset / recessed areas */
+  --color-bg-overlay:  rgba(30, 58, 138, 0.48);
+
+  /* ── Text (body text is dark slate, not navy) ── */
+  --color-text-primary:   var(--p-slate-700);   /* #1E293B — all body copy */
+  --color-text-secondary: var(--p-slate-400);   /* #64748B — secondary/muted */
+  --color-text-tertiary:  var(--p-slate-300);   /* #94A3B8 — placeholder, disabled */
+  --color-text-inverse:   var(--p-white);
+  --color-text-link:      var(--p-cobalt-500);  /* blue links */
+
+  /* ── Borders ── */
+  --color-border-subtle:  #E2E8F2;
+  --color-border-default: #CBD5E8;
+  --color-border-strong:  #94A3C0;
+  --color-border-focus:   var(--p-cobalt-500);  /* blue focus ring */
+
+  /* ── Feedback ── */
+  --color-success-bg:    var(--p-green-50);
+  --color-success-text:  var(--p-green-800);
+  --color-success-icon:  var(--p-green-400);
+  --color-warning-bg:    var(--p-amber-50);
+  --color-warning-text:  var(--p-amber-800);
+  --color-warning-icon:  var(--p-amber-400);
+  --color-danger-bg:     var(--p-red-50);
+  --color-danger-text:   var(--p-red-800);
+  --color-danger-icon:   var(--p-red-600);
+  --color-info-bg:       var(--p-cobalt-50);
+  --color-info-text:     var(--p-cobalt-800);
+  --color-info-icon:     var(--p-cobalt-500);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 3 · PORTAL TOKENS
+   <html data-portal="dentist|lab|education|admin">
+   ──────────────────────────────────────────────────────────── */
+
+/* ──────────────────────────────────
+   DENTIST PORTAL — Cobalt (clinical precision)
+   Faithful to ToothFerry's actual blue
+   ────────────────────────────────── */
+[data-portal="dentist"],
+[data-portal="dentist"] .portal-root {
+  /* Brand ramp — cobalt */
+  --brand-25:  var(--p-cobalt-25);
+  --brand-50:  var(--p-cobalt-50);
+  --brand-100: var(--p-cobalt-100);
+  --brand-200: var(--p-cobalt-200);
+  --brand-300: var(--p-cobalt-300);
+  --brand-400: var(--p-cobalt-400);
+  --brand-500: var(--p-cobalt-500);
+  --brand-600: var(--p-cobalt-600);
+  --brand-700: var(--p-cobalt-700);
+  --brand-800: var(--p-cobalt-800);
+  --brand-900: var(--p-cobalt-900);
+
+  /* Action */
+  --color-action-bg:        var(--p-cobalt-500);
+  --color-action-bg-hover:  var(--p-cobalt-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-cobalt-500);
+  --color-action-ghost-border: var(--p-cobalt-200);
+
+  /* Heading brand color (matches slide h1 #1E3A8A) */
+  --color-heading-brand:    var(--p-cobalt-800);
+
+  /* Sidebar nav */
+  --nav-bg:              var(--p-cobalt-800);
+  --nav-text:            var(--p-cobalt-200);
+  --nav-text-active:     var(--p-white);
+  --nav-active-bg:       var(--p-cobalt-600);
+  --nav-accent:          #60A5FA;   /* sky accent on cobalt nav */
+
+  /* Chart palette */
+  --chart-1: #2563EB; --chart-2: #60A5FA;
+  --chart-3: #93C5FD; --chart-4: #BFDBFE;
+}
+
+/* ──────────────────────────────────
+   LAB PORTAL — Teal (technical craft)
+   ────────────────────────────────── */
+[data-portal="lab"] {
+  --brand-25:  #F0FAFA; --brand-50: var(--p-teal-50);
+  --brand-100: var(--p-teal-100); --brand-200: var(--p-teal-200);
+  --brand-300: var(--p-teal-300); --brand-400: var(--p-teal-400);
+  --brand-500: var(--p-teal-500); --brand-600: var(--p-teal-600);
+  --brand-700: var(--p-teal-700); --brand-800: var(--p-teal-800);
+  --brand-900: var(--p-teal-900);
+
+  --color-action-bg:        var(--p-teal-500);
+  --color-action-bg-hover:  var(--p-teal-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-teal-500);
+  --color-action-ghost-border: var(--p-teal-200);
+  --color-heading-brand:    var(--p-teal-800);
+
+  --nav-bg:             var(--p-teal-800);
+  --nav-text:           var(--p-teal-200);
+  --nav-text-active:    var(--p-white);
+  --nav-active-bg:      var(--p-teal-600);
+  --nav-accent:         #6EE7B7;
+
+  --chart-1: #179A8B; --chart-2: #43B9AC;
+  --chart-3: #88D5CC; --chart-4: #C0EBE5;
+}
+
+/* ──────────────────────────────────
+   EDUCATION PORTAL — Violet (academic growth)
+   ────────────────────────────────── */
+[data-portal="education"] {
+  --brand-25:  #F8F7FD; --brand-50: var(--p-violet-50);
+  --brand-100: var(--p-violet-100); --brand-200: var(--p-violet-200);
+  --brand-300: var(--p-violet-300); --brand-400: var(--p-violet-400);
+  --brand-500: var(--p-violet-500); --brand-600: var(--p-violet-600);
+  --brand-700: var(--p-violet-700); --brand-800: var(--p-violet-800);
+  --brand-900: var(--p-violet-900);
+
+  --color-action-bg:        var(--p-violet-500);
+  --color-action-bg-hover:  var(--p-violet-600);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-violet-500);
+  --color-action-ghost-border: var(--p-violet-200);
+  --color-heading-brand:    var(--p-violet-800);
+
+  --nav-bg:             var(--p-violet-800);
+  --nav-text:           var(--p-violet-200);
+  --nav-text-active:    var(--p-white);
+  --nav-active-bg:      var(--p-violet-600);
+  --nav-accent:         #A78BFA;
+
+  --chart-1: #6750D6; --chart-2: #8B79E5;
+  --chart-3: #B5A9EF; --chart-4: #D5CEF6;
+}
+
+/* ──────────────────────────────────
+   ADMIN PORTAL — Slate (operator authority)
+   ────────────────────────────────── */
+[data-portal="admin"] {
+  --brand-25:  var(--p-slate-25); --brand-50: var(--p-slate-50);
+  --brand-100: var(--p-slate-100); --brand-200: var(--p-slate-200);
+  --brand-300: var(--p-slate-300); --brand-400: var(--p-slate-400);
+  --brand-500: var(--p-slate-500); --brand-600: var(--p-slate-600);
+  --brand-700: var(--p-slate-700); --brand-800: var(--p-slate-800);
+  --brand-900: var(--p-slate-900);
+
+  --color-action-bg:        var(--p-slate-700);
+  --color-action-bg-hover:  var(--p-slate-800);
+  --color-action-text:      var(--p-white);
+  --color-action-ghost-text: var(--p-slate-600);
+  --color-action-ghost-border: var(--p-slate-200);
+  --color-heading-brand:    var(--p-slate-800);
+
+  --nav-bg:             var(--p-slate-800);
+  --nav-text:           var(--p-slate-300);
+  --nav-text-active:    var(--p-white);
+  --nav-active-bg:      var(--p-slate-600);
+  --nav-accent:         #67E8F9;
+
+  --chart-1: #334155; --chart-2: #64748B;
+  --chart-3: #94A3B8; --chart-4: #CBD5E1;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 4 · COMPONENT TOKENS
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Card ── */
+  --card-bg:      var(--p-white);
+  --card-border:  1px solid var(--color-border-subtle);
+  --card-radius:  var(--radius-card);     /* 12px — matches screenshots */
+  --card-padding: var(--space-6);
+  --card-shadow:  var(--shadow-card);
+
+  /* ── Input / Select ──
+     Rounded with blue focus ring — faithful to platform forms */
+  --input-height:      42px;
+  --input-px:          var(--space-4);
+  --input-bg:          var(--p-white);
+  --input-border:      1px solid var(--color-border-default);
+  --input-border-focus:1px solid var(--p-cobalt-500);
+  --input-radius:      var(--radius-lg);   /* 12px — matches Log In form */
+  --input-shadow-focus:0 0 0 3px rgba(37, 99, 235, 0.15);
+  --input-text:        var(--color-text-primary);
+  --input-placeholder: var(--color-text-tertiary);
+
+  /* ── Buttons ──
+     PRIMARY = pill shape (border-radius: 9999px) — matches "Log In", "Save from View"
+     SECONDARY = mild radius (12px)
+     GHOST = no fill */
+  --btn-height-sm:     34px;
+  --btn-height-md:     44px;   /* matches CTA height in screenshots */
+  --btn-height-lg:     52px;
+  --btn-px-sm:         var(--space-4);
+  --btn-px-md:         var(--space-6);
+  --btn-px-lg:         var(--space-8);
+  --btn-radius-pill:   var(--radius-pill);   /* PRIMARY CTAs */
+  --btn-radius-std:    var(--radius-lg);     /* secondary/utility */
+  --btn-font-size:     var(--text-sm);
+  --btn-font-weight:   var(--fw-semibold);
+
+  /* ── Badge / Status chip ──
+     Pill-shaped, faithful to case management table */
+  --badge-radius:      var(--radius-pill);
+  --badge-padding:     4px 14px;
+  --badge-font-size:   var(--text-xs);
+  --badge-font-weight: var(--fw-semibold);
+
+  /* ── Sidebar ── */
+  --sidebar-width:    240px;
+  --sidebar-item-h:   42px;
+  --sidebar-item-r:   var(--radius-md);
+  --sidebar-item-px:  var(--space-3);
+
+  /* ── Table ── */
+  --table-th-bg:       var(--p-cobalt-50);   /* matches blue-tinted header row */
+  --table-th-text:     var(--p-cobalt-700);
+  --table-th-size:     var(--text-sm);
+  --table-th-weight:   var(--fw-semibold);
+  --table-td-padding:  var(--space-3) var(--space-4);
+  --table-border:      1px solid var(--color-border-subtle);
+  --table-row-hover:   var(--p-cobalt-25);
+
+  /* ── Form elements ── */
+  --toggle-width:    46px;
+  --toggle-height:   26px;
+  --toggle-bg-off:   var(--p-slate-300);
+  --toggle-bg-on:    var(--p-cobalt-500);
+  --slider-track-h:  6px;
+  --slider-track-bg: var(--p-cobalt-100);
+  --slider-fill-bg:  var(--p-cobalt-500);
+  --slider-thumb:    var(--p-cobalt-500);
+  --slider-thumb-sz: 20px;
+
+  /* ── Prep card states ── */
+  --prep-success-bg:     var(--status-success-bg);    /* #EFF6FF */
+  --prep-success-border: var(--status-success-border);/* #BFDBFE */
+  --prep-success-text:   var(--status-success-text);  /* #1D4ED8 */
+  --prep-error-bg:       var(--status-error-bg);      /* #FEE2E2 */
+  --prep-error-border:   var(--status-error-border);  /* #FECACA */
+  --prep-error-text:     var(--status-error-text);    /* #B91C1C */
+
+  /* ── Context visibility tabs ── */
+  --tab-active-bg:     var(--p-cobalt-50);
+  --tab-active-text:   var(--p-cobalt-700);
+  --tab-active-weight: var(--fw-semibold);
+  --tab-inactive-text: var(--color-text-secondary);
+
+  /* ── Heatmap scale (retention lateral resistance) ── */
+  --heatmap-low:    #BAE6FD;  /* sky blue — Low retention */
+  --heatmap-mid:    #FDE68A;  /* yellow — Mid */
+  --heatmap-high:   #F97316;  /* orange */
+  --heatmap-crit:   #DC2626;  /* red — High / critical */
+
+  /* ── Distance measurement display ── */
+  --measure-value-size:   var(--text-3xl);
+  --measure-value-weight: var(--fw-bold);
+  --measure-value-color:  var(--p-cobalt-700);
+  --measure-hint-color:   var(--p-cobalt-400);
+
+  /* ── Skeleton / Loading ── */
+  --skeleton-bg:       var(--p-cobalt-50);
+  --skeleton-shimmer:  var(--p-cobalt-25);
+  --skeleton-radius:   var(--radius-md);
+  --skeleton-duration: 1.6s;
+
+  /* ── Progress / Margin generation ── */
+  --progress-track-bg:   var(--p-cobalt-100);
+  --progress-fill-color: var(--p-cobalt-500);
+  --progress-height:     6px;
+  --progress-radius:     var(--radius-pill);
+
+  /* ── Shadows adjusted for blue canvas ── */
+  --shadow-upload-row: 0 1px 4px rgba(30, 58, 138, 0.06);
+
+  /* ── File upload row ── */
+  --upload-row-border:       1px solid var(--color-border-subtle);
+  --upload-row-radius:       var(--radius-lg);
+  --upload-row-filename-color: var(--p-cobalt-500);  /* blue filename links */
+  --upload-row-progress-bg:  var(--p-cobalt-100);
+  --upload-row-progress-fill:var(--p-cobalt-500);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   LAYER 5 · UTILITY CLASSES
+   ──────────────────────────────────────────────────────────── */
+
+/* ── Typography ── */
+.t-heading-brand {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  color: var(--p-cobalt-800);         /* matches slide h1 */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+.t-h1 { font-size: var(--text-4xl); }
+.t-h2 { font-size: var(--text-3xl); }
+.t-h3 { font-size: var(--text-2xl); }
+.t-h4 { font-size: var(--text-xl); }
+.t-body     { font-size: var(--text-base); line-height: var(--lh-relaxed); }
+.t-body-sm  { font-size: var(--text-sm);   line-height: var(--lh-base); }
+.t-label    { font-size: var(--text-xs); font-weight: var(--fw-semibold); letter-spacing: var(--ls-wider); text-transform: uppercase; }
+.t-mono     { font-family: var(--font-mono); font-size: var(--text-sm); }
+.t-link     { color: var(--color-text-link); text-decoration: none; }
+.t-muted    { color: var(--color-text-secondary); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; cursor: pointer; border: none; white-space: nowrap;
+  font-family: var(--font-body); font-weight: var(--btn-font-weight);
+  font-size: var(--btn-font-size); height: var(--btn-height-md);
+  padding: 0 var(--btn-px-md);
+  transition: all var(--dur-fast) var(--ease-expo);
+}
+/* PRIMARY — pill, cobalt fill (matches "Log In", "Save from View", "Evaluate Prep") */
+.btn-primary {
+  background: var(--color-action-bg); color: var(--color-action-text);
+  border-radius: var(--btn-radius-pill);
+}
+.btn-primary:hover { background: var(--color-action-bg-hover); transform: translateY(-1px); }
+.btn-primary:active { transform: scale(0.98); }
+
+/* SECONDARY — standard radius, ghost with border */
+.btn-secondary {
+  background: var(--p-white); color: var(--color-action-ghost-text);
+  border: 1px solid var(--color-action-ghost-border);
+  border-radius: var(--btn-radius-std);
+}
+.btn-secondary:hover { background: var(--brand-25); }
+
+/* GHOST neutral (Cancel etc.) */
+.btn-ghost {
+  background: var(--p-slate-100); color: var(--p-slate-500);
+  border-radius: var(--btn-radius-std); border: none;
+}
+.btn-ghost:hover { background: var(--p-slate-200); }
+.btn-sm { height: var(--btn-height-sm); padding: 0 var(--btn-px-sm); font-size: var(--text-xs); }
+.btn-lg { height: var(--btn-height-lg); padding: 0 var(--btn-px-lg); font-size: var(--text-md); }
+
+/* ── Cards ── */
+.card {
+  background: var(--card-bg); border: var(--card-border);
+  border-radius: var(--card-radius); padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+}
+.card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-5); padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.card-title { font-size: var(--text-base); font-weight: var(--fw-semibold); color: var(--color-text-primary); }
+
+/* ── Status badges (exact from case management table) ── */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: var(--badge-padding); border-radius: var(--badge-radius);
+  font-size: var(--badge-font-size); font-weight: var(--badge-font-weight);
+}
+.badge-progress  { background: var(--status-progress-bg);  color: var(--status-progress-text); }
+.badge-ready     { background: var(--status-ready-bg);     color: var(--status-ready-text); }
+.badge-review    { background: var(--status-review-bg);    color: var(--status-review-text); }
+.badge-reviewed  { background: var(--status-reviewed-bg);  color: var(--status-reviewed-text); }
+.badge-pending   { background: var(--status-pending-bg);   color: var(--status-pending-text); }
+.badge-error     { background: var(--status-error-bg);     color: var(--status-error-text); }
+.badge-info      { background: var(--color-info-bg);       color: var(--color-info-text); }
+
+/* ── Prep result cards ── */
+.prep-card-success {
+  background: var(--prep-success-bg);
+  border: 1px solid var(--prep-success-border);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+}
+.prep-card-error {
+  background: var(--prep-error-bg);
+  border: 1px solid var(--prep-error-border);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+}
+
+/* ── Form input ── */
+.input {
+  height: var(--input-height); padding: 0 var(--input-px);
+  background: var(--input-bg); border: var(--input-border);
+  border-radius: var(--input-radius); color: var(--input-text);
+  font-size: var(--text-sm); width: 100%; outline: none;
+  transition: border var(--dur-fast), box-shadow var(--dur-fast);
+}
+.input:focus { border: var(--input-border-focus); box-shadow: var(--input-shadow-focus); }
+.input::placeholder { color: var(--input-placeholder); }
+
+.select {
+  height: var(--input-height); padding: 0 var(--input-px);
+  background: var(--input-bg); border: var(--input-border);
+  border-radius: var(--input-radius); color: var(--input-text);
+  font-size: var(--text-sm); width: 100%; outline: none;
+  appearance: none; cursor: pointer;
+}
+.select:focus { border: var(--input-border-focus); box-shadow: var(--input-shadow-focus); }
+
+/* ── Toggle ── */
+.toggle {
+  width: var(--toggle-width); height: var(--toggle-height);
+  border-radius: var(--radius-pill); background: var(--toggle-bg-off);
+  position: relative; cursor: pointer; transition: background var(--dur-base);
+  border: none;
+}
+.toggle.on { background: var(--toggle-bg-on); }
+.toggle-thumb {
+  width: calc(var(--toggle-height) - 4px);
+  height: calc(var(--toggle-height) - 4px);
+  border-radius: var(--radius-pill); background: var(--p-white);
+  position: absolute; top: 2px; left: 2px;
+  transition: transform var(--dur-base) var(--ease-expo);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle.on .toggle-thumb { transform: translateX(calc(var(--toggle-width) - var(--toggle-height))); }
+
+/* ── Range slider ── */
+.slider-track {
+  height: var(--slider-track-h); background: var(--slider-track-bg);
+  border-radius: var(--radius-pill); position: relative;
+}
+.slider-fill {
+  height: 100%; background: var(--slider-fill-bg);
+  border-radius: var(--radius-pill);
+}
+input[type="range"] {
+  width: 100%; height: var(--slider-track-h);
+  accent-color: var(--slider-thumb); cursor: pointer;
+}
+
+/* ── Table ── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  background: var(--table-th-bg); color: var(--table-th-text);
+  font-size: var(--table-th-size); font-weight: var(--table-th-weight);
+  padding: var(--table-td-padding); text-align: left;
+  border-bottom: var(--table-border);
+}
+.data-table td {
+  padding: var(--table-td-padding); color: var(--color-text-primary);
+  border-bottom: var(--table-border); font-size: var(--text-sm);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--table-row-hover); }
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sidebar-width); min-width: var(--sidebar-width);
+  background: var(--nav-bg); display: flex;
+  flex-direction: column; height: 100vh; padding: var(--space-4) 0;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  height: var(--sidebar-item-h); padding: 0 var(--sidebar-item-px);
+  margin: 1px var(--space-2); border-radius: var(--sidebar-item-r);
+  color: var(--nav-text); font-size: var(--text-sm); cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-expo);
+}
+.sidebar-item:hover { background: rgba(255,255,255,0.08); color: var(--nav-text-active); }
+.sidebar-item.active { background: var(--nav-active-bg); color: var(--nav-text-active); }
+
+/* ── KPI stat card ── */
+.kpi-card {
+  background: var(--p-white); border: var(--card-border);
+  border-radius: var(--card-radius); padding: var(--space-5);
+  box-shadow: var(--card-shadow);
+}
+.kpi-card__label {
+  font-size: var(--text-xs); font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider); text-transform: uppercase;
+  color: var(--color-text-secondary); margin-bottom: var(--space-2);
+}
+.kpi-card__value {
+  font-family: var(--font-display); font-size: var(--text-2xl);
+  font-weight: var(--fw-bold); color: var(--color-text-primary); line-height: 1;
+  margin-bottom: var(--space-1);
+}
+.kpi-card__delta { font-size: var(--text-xs); font-weight: var(--fw-semibold); }
+.kpi-card__delta.up   { color: var(--p-green-600); }
+.kpi-card__delta.down { color: var(--p-red-600); }
+
+/* ── Upload row ── */
+.upload-row {
+  border: var(--upload-row-border); border-radius: var(--upload-row-radius);
+  padding: var(--space-3) var(--space-4); display: flex;
+  align-items: center; gap: var(--space-3); background: var(--p-white);
+}
+.upload-row.has-file { border-color: var(--p-cobalt-300); }
+.upload-filename { color: var(--upload-row-filename-color); font-size: var(--text-sm); font-weight: var(--fw-medium); }
+
+/* ── Context visibility tab bar (analysis toolbar) ── */
+.viz-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 1px; }
+.viz-tab {
+  padding: 8px var(--space-4); font-size: var(--text-sm);
+  color: var(--tab-inactive-text); cursor: pointer; border: none;
+  background: transparent; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.viz-tab.active {
+  background: var(--tab-active-bg); color: var(--tab-active-text);
+  font-weight: var(--tab-active-weight);
+}
+
+/* ── Distance measurement display ── */
+.distance-readout {
+  font-family: var(--font-display); font-size: var(--measure-value-size);
+  font-weight: var(--measure-value-weight); color: var(--measure-value-color);
+}
+.distance-hint { font-size: var(--text-sm); color: var(--measure-hint-color); }
+
+/* ── Heatmap legend ── */
+.heatmap-bar {
+  height: 12px; border-radius: var(--radius-pill);
+  background: linear-gradient(to right,
+    var(--heatmap-low), var(--heatmap-mid),
+    var(--heatmap-high), var(--heatmap-crit)
+  );
+}
+
+/* ── Instructor feedback card ── */
+.feedback-card {
+  background: var(--p-cobalt-50); border-radius: var(--card-radius);
+  overflow: hidden;
+}
+.feedback-card-header {
+  background: var(--p-cobalt-100); padding: var(--space-4) var(--space-5);
+  font-weight: var(--fw-semibold); color: var(--p-cobalt-800);
+}
+.feedback-card-body { padding: var(--space-5); }
+.feedback-textarea {
+  width: 100%; min-height: 140px; padding: var(--space-4);
+  border: var(--input-border); border-radius: var(--radius-lg);
+  font-size: var(--text-sm); color: var(--color-text-primary);
+  resize: vertical; outline: none;
+  font-family: var(--font-body); line-height: var(--lh-base);
+}
+.feedback-textarea:focus { border: var(--input-border-focus); box-shadow: var(--input-shadow-focus); }
+
+/* ── Focus ring (accessibility) ── */
+:focus-visible { outline: 2px solid var(--p-cobalt-500); outline-offset: 2px; }
+
+/* ── Skeleton loader ── */
+.skeleton { background: var(--skeleton-bg); border-radius: var(--skeleton-radius);
+  animation: pulse var(--skeleton-duration) ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+/*
+ * ============================================================
+ * END — INTELLIDENT™ / TOOTHFERRY AI Design Tokens v2.0
+ * Usage: <html data-portal="dentist|lab|education|admin">
+ * Primary blue: #2563EB · CTA radius: 9999px · Canvas: #EEF3FA
+ * ============================================================
+ */

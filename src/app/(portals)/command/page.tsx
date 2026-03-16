@@ -6,6 +6,7 @@ import { KpiCard } from '@/components/ui/KpiCard';
 import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { StaggerChildren, StaggerItem } from '@/components/animation/StaggerChildren';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const kpis = [
   { label: 'Crowns Processed', value: 1847, delta: '+23 today', deltaDirection: 'up' as const },
@@ -88,6 +89,7 @@ export default function CommandOverview() {
   }, []);
 
   return (
+    <EditablePortalPage slug="command">
     <PageTransition>
       <div data-portal="command" className="min-h-screen bg-[var(--color-bg-page)] p-8" style={{ fontFamily: 'var(--font-mono)' }}>
         {/* Header */}
@@ -159,5 +161,6 @@ export default function CommandOverview() {
         </Card>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

@@ -5,6 +5,7 @@ import { PortalBar } from '@/components/layout/PortalBar';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { FadeSlideIn } from '@/components/animation/FadeSlideIn';
 import { StaggerChildren, StaggerItem } from '@/components/animation/StaggerChildren';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const PORTALS = [
   { id: 'operator', label: 'Operator Console', desc: 'Real-time case routing & dispatch', icon: '⚡', color: 'var(--landing-accent)', path: '/operator', features: ['Case assignment', 'Queue management', 'Cross-portal dispatch'] },
@@ -43,6 +44,7 @@ const FOUNDERS = [
 
 export default function LandingPage() {
   return (
+    <EditablePortalPage slug="landing">
     <>
       <PortalBar />
       <div className="min-h-screen" style={{ background: 'var(--landing-bg)', paddingTop: 38 }}>
@@ -296,5 +298,6 @@ export default function LandingPage() {
         </footer>
       </div>
     </>
+    </EditablePortalPage>
   );
 }

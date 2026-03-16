@@ -5,6 +5,7 @@ import { KpiCard } from '@/components/ui/KpiCard';
 import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { StaggerChildren, StaggerItem } from '@/components/animation/StaggerChildren';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const kpis = [
   { label: 'Active Students', value: 124, delta: '+18 this semester', deltaDirection: 'up' as const },
@@ -35,6 +36,7 @@ const activityColors: Record<string, string> = {
 
 export default function AcademicOverview() {
   return (
+    <EditablePortalPage slug="academic">
     <PageTransition>
       <div className="min-h-screen bg-[var(--color-bg-page)] p-8">
         {/* Header */}
@@ -125,5 +127,6 @@ export default function AcademicOverview() {
         </div>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

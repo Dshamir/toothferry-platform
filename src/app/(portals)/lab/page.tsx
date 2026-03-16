@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { useSimulationStore } from '@/store/simulation-store';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const statusToBadge: Record<string, 'progress' | 'ready' | 'review' | 'pending' | 'error' | 'success' | 'info'> = {
   pending: 'pending',
@@ -47,6 +48,7 @@ export default function LabOrderQueue() {
   const maxThroughput = Math.max(...THROUGHPUT_DATA.map((d) => d.value));
 
   return (
+    <EditablePortalPage slug="lab">
     <PageTransition>
       <div className="space-y-6">
         {/* Page heading */}
@@ -250,5 +252,6 @@ export default function LabOrderQueue() {
         </div>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

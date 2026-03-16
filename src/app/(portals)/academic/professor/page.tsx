@@ -11,6 +11,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { FiveAxisChart } from '@/components/academic/FiveAxisChart';
 import { useAcademicStore } from '@/store/academic-store';
 import { ACADEMIC_PERSONAS } from '@/data/academic-seed';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 export default function ProfessorDashboardPage() {
   const router = useRouter();
@@ -44,6 +45,7 @@ export default function ProfessorDashboardPage() {
   const pendingApproval = evaluations.filter((e) => !e.finalized && myAssistantIds.includes(e.evaluatorId));
 
   return (
+    <EditablePortalPage slug="professor">
     <PageTransition>
       <div className="min-h-screen bg-[var(--color-bg-page)] p-8">
         {/* Domain context header */}
@@ -269,5 +271,6 @@ export default function ProfessorDashboardPage() {
         </StaggerChildren>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

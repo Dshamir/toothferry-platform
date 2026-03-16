@@ -6,6 +6,7 @@ import { KpiCard } from '@/components/ui/KpiCard';
 import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { useSimulationStore } from '@/store/simulation-store';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const PIPELINE_STAGES = [
   { label: 'Submitted', key: 'submitted' },
@@ -37,6 +38,7 @@ export default function DentistDashboard() {
     cases.filter((c) => statuses.includes(c.status)).length;
 
   return (
+    <EditablePortalPage slug="dentist">
     <PageTransition>
       <div className="space-y-6">
         {/* Page heading */}
@@ -149,5 +151,6 @@ export default function DentistDashboard() {
         </Card>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

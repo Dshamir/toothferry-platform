@@ -8,6 +8,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { useAcademicStore } from '@/store/academic-store';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 export default function AssistantDashboardPage() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function AssistantDashboardPage() {
   const recentSubmissions = mySubmissions.slice(0, 5);
 
   return (
+    <EditablePortalPage slug="assistant">
     <PageTransition>
       <div className="min-h-screen bg-[var(--color-bg-page)] p-8">
         {/* Domain context header */}
@@ -195,5 +197,6 @@ export default function AssistantDashboardPage() {
         </StaggerChildren>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { StatusLed } from '@/components/shared/StatusLed';
 import { StaggerChildren, StaggerItem } from '@/components/animation/StaggerChildren';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const healthCards = [
   { label: 'API Health', value: '100%', delta: 'All endpoints operational', deltaDirection: 'up' as const },
@@ -39,6 +40,7 @@ const storage = [
 
 export default function AdminOverview() {
   return (
+    <EditablePortalPage slug="admin">
     <PageTransition>
       <div data-portal="admin" className="min-h-screen bg-[var(--color-bg-page)] p-8">
         {/* Header */}
@@ -152,5 +154,6 @@ export default function AdminOverview() {
         </div>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

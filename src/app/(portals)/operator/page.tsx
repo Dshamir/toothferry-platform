@@ -7,6 +7,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { KpiCard } from '@/components/ui/KpiCard';
 import { StaggerChildren, StaggerItem } from '@/components/animation/StaggerChildren';
 import { FadeSlideIn } from '@/components/animation/FadeSlideIn';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 const phases = [
   { name: 'Submitted', count: 2, color: 'var(--p-cobalt-400)', percentage: 25 },
@@ -45,6 +46,7 @@ const statusBadge: Record<string, { variant: 'ready' | 'pending' | 'reviewed' | 
 
 export default function OperatorPage() {
   return (
+    <EditablePortalPage slug="operator">
     <PageTransition>
       <div className="min-h-screen bg-[var(--color-bg-page)] p-8">
         {/* Hero Section */}
@@ -186,5 +188,6 @@ export default function OperatorPage() {
         </StaggerChildren>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

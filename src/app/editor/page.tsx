@@ -7,7 +7,7 @@ import { PortalBar } from '@/components/layout/PortalBar';
 
 export default function EditorDashboard() {
   const router = useRouter();
-  const { pages, pageMeta } = useEditorStore();
+  const { pages, pageMeta, deletePage } = useEditorStore();
 
   return (
     <>
@@ -71,6 +71,21 @@ export default function EditorDashboard() {
 
                   {/* Actions */}
                   {hasEdits && (
+                    <>
+                    <button
+                      onClick={() => {
+                        if (confirm(`Reset "${portal.title}" to its default layout?`)) {
+                          deletePage(portal.slug);
+                        }
+                      }}
+                      style={{
+                        height: 36, padding: '0 16px', fontSize: 12, fontWeight: 600,
+                        background: 'transparent', color: 'var(--p-slate-500, #64748b)',
+                        border: '1px solid var(--color-border-subtle)', borderRadius: 6, cursor: 'pointer',
+                      }}
+                    >
+                      Reset
+                    </button>
                     <button
                       onClick={() => router.push(`/editor/preview/${portal.slug}`)}
                       style={{
@@ -81,6 +96,7 @@ export default function EditorDashboard() {
                     >
                       Preview
                     </button>
+                    </>
                   )}
                   <button
                     onClick={() => router.push(`/editor/${portal.slug}`)}

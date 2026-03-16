@@ -10,6 +10,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { StudentProfileCard } from '@/components/academic/StudentProfileCard';
 import { FiveAxisChart } from '@/components/academic/FiveAxisChart';
 import { useAcademicStore } from '@/store/academic-store';
+import { EditablePortalPage } from '@/components/shared/EditablePortalPage';
 
 export default function StudentDashboardPage() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function StudentDashboardPage() {
   const myPendingSubs = enrollments.length; // dummy for pending subs count
 
   return (
+    <EditablePortalPage slug="student">
     <PageTransition>
       <div className="min-h-screen bg-[var(--color-bg-page)] p-8">
         <StaggerChildren className="space-y-6">
@@ -231,5 +233,6 @@ export default function StudentDashboardPage() {
         </StaggerChildren>
       </div>
     </PageTransition>
+    </EditablePortalPage>
   );
 }

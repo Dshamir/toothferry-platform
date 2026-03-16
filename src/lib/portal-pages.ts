@@ -14,6 +14,9 @@ export const PORTAL_PAGES: PortalPage[] = [
   { slug: 'admin', title: 'Admin', path: '/admin', color: '#58A6FF', description: 'System health, service status, GPU & storage monitoring' },
   { slug: 'command', title: 'Command Center', path: '/command', color: '#3FB950', description: 'Live ops, KPIs with sparklines, event feed' },
   { slug: 'academic', title: 'Academic', path: '/academic', color: '#185FA5', description: 'University admin — students, modules, activity feed' },
+  { slug: 'professor', title: 'Professor', path: '/academic/professor', color: '#6750D6', description: '5-axis evaluation, student review queue, assistant management' },
+  { slug: 'assistant', title: 'Assistant', path: '/academic/assistant', color: '#0F6E56', description: 'Grade assigned students, submit evaluations for professor review' },
+  { slug: 'student', title: 'Student', path: '/academic/student', color: '#C2185B', description: 'Submit scans, view scores, feedback inbox, transcript' },
   { slug: 'dentist', title: 'Dentist', path: '/dentist', color: '#1D9E75', description: 'Dentist dashboard — KPIs, pipeline status, recent cases' },
   { slug: 'lab', title: 'Lab', path: '/lab', color: '#EF9F27', description: 'Lab order queue, machine utilization, material inventory' },
 ];
@@ -71,6 +74,36 @@ export function getPortalSeed(slug: string): Data {
           { type: 'Columns', props: { columns: '4', id: 'c-1' } },
           { type: 'Spacer', props: { height: 16, id: 's-2' } },
           { type: 'Columns', props: { columns: '3', id: 'c-2' } },
+        ],
+      };
+    case 'professor':
+      return {
+        root: {},
+        content: [
+          { type: 'Heading', props: { text: 'Professor Portal', level: 'h2', id: 'h-1' } },
+          { type: 'Paragraph', props: { text: '5-axis evaluation scoring, student review queue, and assistant management.', id: 'p-1' } },
+          { type: 'Spacer', props: { height: 16, id: 's-1' } },
+          { type: 'Columns', props: { columns: '3', id: 'c-1' } },
+        ],
+      };
+    case 'assistant':
+      return {
+        root: {},
+        content: [
+          { type: 'Heading', props: { text: 'Assistant Portal', level: 'h2', id: 'h-1' } },
+          { type: 'Paragraph', props: { text: 'Grade assigned students and submit evaluations for professor review.', id: 'p-1' } },
+          { type: 'Spacer', props: { height: 16, id: 's-1' } },
+          { type: 'Columns', props: { columns: '3', id: 'c-1' } },
+        ],
+      };
+    case 'student':
+      return {
+        root: {},
+        content: [
+          { type: 'Heading', props: { text: 'Student Portal', level: 'h2', id: 'h-1' } },
+          { type: 'Paragraph', props: { text: 'Submit prep scans, view scores and feedback, track module progress.', id: 'p-1' } },
+          { type: 'Spacer', props: { height: 16, id: 's-1' } },
+          { type: 'Columns', props: { columns: '4', id: 'c-1' } },
         ],
       };
     case 'dentist':

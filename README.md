@@ -90,7 +90,16 @@ Production operations. Order queue with priority cards, machine utilization (pro
 | `/lab/review` | STL review and approval |
 
 ### Page Editor (`/editor`)
-Visual drag-and-drop page editor built on [Puck](https://github.com/measuredco/puck). Lists all portal pages for editing. Each opens a full-screen Puck canvas with a component panel on the left.
+Visual drag-and-drop page editor built on [Puck](https://github.com/measuredco/puck). Lists all 10 portal pages for editing. Each opens a full-screen Puck canvas pre-populated with rich seed content matching the portal's real KPIs and layout.
+
+**Live editing flow:**
+1. Visit `/editor` → select a portal page → Puck opens with pre-seeded KPI cards, progress bars, and content
+2. Edit the layout visually → click **Publish**
+3. Visit the actual portal route (e.g. `/dentist`) → the Puck-edited version is rendered instead of the default page
+4. A floating **"Edited via Puck"** indicator appears with a **Reset** button to restore the original
+5. Reset is also available from the editor dashboard
+
+All 10 portal pages are wrapped with `EditablePortalPage`, which checks the editor store at render time — if published Puck data exists for that slug, it renders the Puck output; otherwise the original React page renders unchanged.
 
 Available editor components wrap the platform's actual UI primitives:
 - **Typography:** Heading (h1-h4), Paragraph

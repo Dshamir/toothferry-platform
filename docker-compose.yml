@@ -5,5 +5,6 @@ services:
     ports:
       - "3050:8888"
     environment:
-      NGROK_AUTHTOKEN: 2xp5CFLpEd0Xr8KLjZ69h0lxl9p_43UGFKD5EwyHYgW13kTev
+      # ngrok retired 2026-10-17 (Cloudflare tunnel); never commit tokens — supply via env if ever needed
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:-}
     restart: unless-stopped
